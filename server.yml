@@ -22,9 +22,9 @@ spec:
           - name: QDRANT_URL
             value: "http://qdrant-service.default.svc.cluster.local:6333"
         volumeMounts:
-            - name: secret
-              mountPath: /app/.env
-              subPath: .env
+          - name: secret
+            mountPath: /usr/src/app/.env
+            subPath: .env
       volumes:
         - name: secret
           secret:
@@ -59,12 +59,13 @@ spec:
       secretName: qanda-backend-tls
   rules:
     - host: api.solana.trim.ink
-    http:
+      http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: qanda-backend
+                name: qanda-chatbot-server
                 port:
                   number: 80
+

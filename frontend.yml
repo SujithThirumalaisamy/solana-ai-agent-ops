@@ -16,6 +16,9 @@ spec:
       - name: qanda-frontend
         image: sujiththirumalaisamy/qanda-frontend:a2c1341903dcacb9ed35f78165e52ff4f51d8b86
         imagePullPolicy: Always
+        env:
+          - name: VITE_BACKEND_URL
+            value: "http://api.solana.trim.ink"
         ports:
         - containerPort: 3000
 ---
@@ -24,11 +27,11 @@ kind: Service
 metadata:
   name: qanda-frontend
 spec:
+  selector:
+    app: qanda-frontend
   ports:
   - port: 80
     targetPort: 3000
-  selector:
-    app: qanda-frontend
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -39,17 +42,17 @@ metadata:
 spec:
   ingressClassName: traefik
   tls:
-    - hosts:
-        - solana.trim.ink
-      secretName: qanda-frontend-tls
+  - hosts:
+      - solana.trim.ink
+    secretName: qanda-frontend-tls
   rules:
-    - host: solana.trim.ink
+  - host: solana.trim.ink
     http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: qanda-frontend
-                port:
-                  number: 80
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: qanda-frontend
+            port:
+              number: 80
