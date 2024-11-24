@@ -18,7 +18,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: VITE_BACKEND_URL
-            value: "http://api.solana.trim.ink"
+            value: https://api.solana.trim.ink/api
         ports:
         - containerPort: 3000
 ---
@@ -40,7 +40,6 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  ingressClassName: traefik
   tls:
   - hosts:
       - solana.trim.ink
