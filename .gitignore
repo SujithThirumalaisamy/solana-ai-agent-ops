@@ -1,1 +1,4 @@
 secrets.yml
+.env
+.env.base
+sealed-secrets.pem
