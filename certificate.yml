@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ai-api-cert
+  namespace: default
+spec:
+  secretName: ai-api-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: api.solana.trim.ink
+  dnsNames:
+  - api.solana.trim.ink
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ai-cert
+  namespace: default
+spec:
+  secretName: ai-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: solana.trim.ink
+  dnsNames:
+  - solana.trim.ink
