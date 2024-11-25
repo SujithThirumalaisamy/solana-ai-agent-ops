@@ -1,23 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  labels:
+    app.kubernetes.io/instance: qanda-solana
   name: qanda-solana
   namespace: argocd
 spec:
   destination:
-    name: ''
-    namespace: 'default'
+    name: ""
+    namespace: default
     server: https://kubernetes.default.svc
+  project: default
   source:
     path: .
     repoURL: https://github.com/sujiththirumalaisamy/solana-ai-agent-ops.git
     targetRevision: HEAD
-    directory:
-      recurse: false
-      jsonnet:
-        extVars: []
   sources: []
-  project: default
   syncPolicy:
     automated:
       prune: true
