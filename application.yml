@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: qanda-solana
+  namespace: argocd
 spec:
   destination:
     name: ''
@@ -9,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     path: /
-    repoURL: https://github.com/SujithThirumalaisamy/solana-ai-agent-ops.git
+    repoURL: https://github.com/sujiththirumalaisamy/solana-ai-agent-ops.git
     targetRevision: HEAD
     directory:
       recurse: false
