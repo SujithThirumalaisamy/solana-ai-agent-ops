@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: qanda-server
-        image: sujiththirumalaisamy/qanda-backend:0bf682369bbe5a58c1ff544cd21ddc5e973c381c
+        image: sujiththirumalaisamy/qanda-backend:75df9c619c8601f272e5329eec31282c51f8b515
         imagePullPolicy: Always
         ports:
         - containerPort: 3001
