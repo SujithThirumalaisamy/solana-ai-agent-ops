@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: qanda-frontend
-        image: sujiththirumalaisamy/qanda-frontend:709651ec4fbb6705a3e413d5b2cffe8a57a47e7d
+        image: sujiththirumalaisamy/qanda-frontend:138835a20843028519b64d4359a33dc2b081b1fa
         imagePullPolicy: Always
         env:
           - name: VITE_BACKEND_URL
